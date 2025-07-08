@@ -20,19 +20,23 @@
 //#OUTPUT
 
 const passenger_age = 10;
-const Km = 10 //number(prompt(`type the km you esnt to do in journey`))
+const km = 100 //number(prompt(`type the km you esnt to do in journey`))
 
 const PRICE_PER_KM  = 0.21;
 const minor_discount = 0.2;
 const senior_discount = 0.0;
+let message = `Prezzo Biglietto Standard`
 
 ticket_price = km * PRICE_PER_KM
 console.log(ticket_price);
 
 if(passenger_age < 18){
-    ticket_price = ticket_price * minor_discount;
+    ticket_price -= ticket_price * minor_discount;
+    message = `Prezzo Biglietto Minorenni`
 }
-else{
-    ticket_price = ticket_price * senior_discount;
+else if (passenger_age > 65){
+    ticket_price -= ticket_price * senior_discount;
+    message = `Prezzo Biglietto  Over 65`
 }
 
+console.log(message, ticket_price.toFixed(2));
